@@ -8,18 +8,23 @@ class GigabankTextField extends StatelessWidget {
     this.validator,
     this.inputFormatters,
     this.controller,
+    this.suffixIcon,
   });
 
   final String hintText;
   final String? Function(String?)? validator;
   final List<TextInputFormatter>? inputFormatters;
   final TextEditingController? controller;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      decoration: InputDecoration(hintText: hintText),
+      decoration: InputDecoration(
+        hintText: hintText,
+        suffixIcon: suffixIcon,
+      ),
       validator: validator,
       inputFormatters: inputFormatters,
     );

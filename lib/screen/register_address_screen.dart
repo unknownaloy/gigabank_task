@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gigabank_task/component/gigabank_text_field.dart';
+import 'package:gigabank_task/model/address_model.dart';
 
 class RegisterAddressScreen extends StatefulWidget {
   const RegisterAddressScreen({super.key});
@@ -32,8 +33,24 @@ class _RegisterAddressScreenState extends State<RegisterAddressScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFffffff),
       appBar: AppBar(
-        title: const Text("Register Address"),
+        title: const Text(
+          "Register Address",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: const Color(0xFF4c1ea6),
+        bottom: const PreferredSize(
+          preferredSize: Size.fromHeight(6),
+          child: LinearProgressIndicator(
+            value: 0.5,
+            minHeight: 6,
+            backgroundColor: Color(0xFFf1ebf9),
+            color: Color(0xFFffb03b),
+          ),
+        ),
       ),
       body: Form(
         key: _formKey,
@@ -41,18 +58,28 @@ class _RegisterAddressScreenState extends State<RegisterAddressScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 const SizedBox(
-                  height: 16,
+                  height: 32,
                 ),
                 const Text(
-                    "Please enter the information as written on your ID document."),
+                  "Please enter the information as written\non your ID document.",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
                 const SizedBox(
-                  height: 48,
+                  height: 40,
                 ),
                 GigabankTextField(
                   controller: _countryController,
                   hintText: "Country",
+                  suffixIcon: const Icon(
+                    Icons.search,
+                    color: Colors.grey,
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter country';
@@ -94,7 +121,7 @@ class _RegisterAddressScreenState extends State<RegisterAddressScreen> {
                   hintText: "Street address (subarea - block - house ...",
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
+                      return 'Please enter street address';
                     }
 
                     final RegExp regex =
@@ -139,12 +166,19 @@ class _RegisterAddressScreenState extends State<RegisterAddressScreen> {
               child: TextButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Data saved')),
+                    final userAddress = UserAddress(
+                      country: _countryController.text.trim(),
+                      prefecture: _prefectureController.text.trim(),
+                      municipality: _municipalityController.text.trim(),
+                      streetAddress: _streetAddressController.text.trim(),
+                      apartment: _apartmentController.text.trim(),
                     );
 
-
-
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('User Address saved in object'),
+                      ),
+                    );
                   }
                 },
                 style: ButtonStyle(
@@ -161,6 +195,7 @@ class _RegisterAddressScreenState extends State<RegisterAddressScreen> {
                   "Next",
                   style: TextStyle(
                     color: Colors.white,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),

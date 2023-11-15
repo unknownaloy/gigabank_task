@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Gigabank Task',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF05f077),),
         useMaterial3: true,
       ),
       home: const RegisterAddressScreen(),
