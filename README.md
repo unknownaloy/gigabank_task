@@ -1,16 +1,14 @@
-# gigabank_task
+# Gigabank Task
 
-A new Flutter project.
+Gigabank Task to validate form and save inputted data.
+
+## Prerequisites
+- Ensure you have the Flutter SDK installed on your machine. You can download it from [here](https://docs.flutter.dev/get-started/install)
+- Ensure you have an IDE installed, such as [Android Studio](https://developer.android.com/studio), [Visual Studio Code](https://code.visualstudio.com/download) or [IntelliJ IDEA](https://www.jetbrains.com/idea/download/)
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Clone this repository to your local machine using `https://github.com/unknownaloy/gigabank_task.git`
+- Open the project in your preferred code editor.
+- Run `flutter pub get` to install the app's dependencies.
+- Connect a device, an android emulator or an ios simulator.
+- Run `flutter run` to start the app.
